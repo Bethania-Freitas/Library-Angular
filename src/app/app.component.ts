@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { environment } from '../environments/environment';
 import { LivroService } from './services/livro.services';
 import { Livros } from './models/livros.model';
+import { Reservas } from './models/reservas.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +21,7 @@ export class AppComponent {
   autor = '';
   ano_publicacao = '';
 
-  constructor(private livroService: LivroService) {
+  constructor(private livroService: LivroService, private router: Router) {
     this.obterLivrosCadastrados();
   }
 
@@ -60,9 +62,16 @@ export class AppComponent {
       .subscribe((_) => this.obterLivrosCadastrados());
   }
 
-  Inativar(id: number) {
-    this.livroService
-      .inativarLivro(id)
-      .subscribe((_) => this.obterLivrosCadastrados());
+  Inativar(id: number, disponibilidade: Livros) {
+    if ((disponibilidade.ativo = true)) {
+      this.livroService
+        .inativarLivro(id)
+        .subscribe((_) => this.obterLivrosCadastrados());
+    }
+    this.livroService.ativarLivro(id);
+  }
+
+  Reservar(id: number): void {
+    this.router.navigate([`${id}/reservas`]);
   }
 }

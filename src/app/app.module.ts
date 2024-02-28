@@ -10,9 +10,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
+import { ReservaComponent } from './reserva/reserva.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ReservaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -30,4 +30,8 @@ export class LivroService {
   inativarLivro(id: number) {
     return this.httpClient.delete<void>(`${this.url}/${id}`);
   }
+
+  ativarLivro(id: number) {
+    //todo - acho que falta isso no
+  }
 }
