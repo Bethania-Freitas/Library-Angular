@@ -26,4 +26,18 @@ export class AppComponent {
   obterLivrosCadastrados() {
     this.livros$ = this.livroService.obterLivro();
   }
+
+  cadastrarNovoLivro() {
+    if (!this.titulo || !this.autor) return;
+    this.livroService
+      .cadastrarLivro({
+        titulo: this.titulo,
+        autor: this.autor,
+        ano_publicacao: this.ano_publicacao,
+        ativo: true,
+      })
+      .subscribe((_) => this.obterLivrosCadastrados());
+  }
+
+  preencherCampos(book: Livros) {}
 }

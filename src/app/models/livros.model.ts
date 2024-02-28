@@ -2,6 +2,6 @@ export interface Livros {
   id?: number;
   autor: string;
   titulo: string;
-  ativo: boolean;
+  ativo?: boolean;
   ano_publicacao: string;
 }
