@@ -52,6 +52,7 @@
             {{ livro.ativo ? "Inativar" : "Ativar" }}
           </button>
           <a [routerLink]="[livro.id, 'reservas']">Reservas</a>
+          <a [routerLink]="[livro.id, 'Exemplares']">Exemplares</a>
 
           <!-- <button type="button" (click)="Copias(livro.id!)">Copias</button> -->
         </td>
@@ -59,4 +60,3 @@
     </tbody>
   </table>
 </div>
-<router-outlet></router-outlet>

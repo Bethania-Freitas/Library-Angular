@@ -11,9 +11,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { ReservaComponent } from './reserva/reserva.component';
+import { ExemplarComponent } from './exemplar/exemplar.component';
 
 @NgModule({
-  declarations: [AppComponent, ReservaComponent],
+  declarations: [AppComponent, ReservaComponent, ExemplarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
