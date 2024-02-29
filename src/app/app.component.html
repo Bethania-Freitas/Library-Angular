@@ -52,11 +52,13 @@
           <button type="button" (click)="Inativar(livro.id!, livro)">
             {{ livro.ativo ? "Inativar" : "Ativar" }}
           </button>
-          <a [routerLink]="[livro.id, 'reservas']">Reservas</a>
-          <a [routerLink]="[livro.id, 'Exemplares']">Exemplares</a>
+          <a *ngIf="livro.id" [routerLink]="[livro.id, 'reservas']">Reservas</a>
+          <a *ngIf="livro.id" [routerLink]="[livro.id, 'Exemplares']"
+            >Exemplares</a
+          >
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-<router-outlet></router-outlet>
+<router-outlet> </router-outlet>

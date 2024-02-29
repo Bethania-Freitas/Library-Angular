@@ -38,6 +38,7 @@ export class AppComponent {
 
   cadastrarNovoLivro() {
     if (!this.titulo || !this.autor) return;
+    if (this.id !== null && this.id !== undefined) return;
     if (this.id) {
       this.atualizar();
     }
