@@ -1,15 +1,16 @@
 import { Reservas } from './../models/reservas.model';
 import { ReservaService } from './../services/reserva.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reserva',
   templateUrl: './reserva.component.html',
   styleUrl: './reserva.component.scss',
 })
-export class ReservaComponent implements OnInit {
+export class ReservaComponent {
   title = 'Reservas';
 
   reservas$ = new Observable<Reservas[]>();
@@ -23,14 +24,6 @@ export class ReservaComponent implements OnInit {
     private reservaService: ReservaService,
     private route: ActivatedRoute
   ) {}
-
-  ngOnInit() {
-    this.route.paramMap.subscribe((params) => {
-      const idFromRoute = params.get('id')!;
-      this.id = idFromRoute;
-      this.obterReservasCadastradas();
-    });
-  }
 
   obterReservasCadastradas() {
     this.reservas$ = this.reservaService.obterReservas(this.id);

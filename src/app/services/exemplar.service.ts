@@ -12,7 +12,9 @@ export class ExemplarService {
 
   constructor(private httpClient: HttpClient) {}
 
-  obterQuantidade() {
-    return this.httpClient.get<Exemplares[]>(this.url);
+  obterQuantidade(idLivro: string): Observable<Exemplares[]> {
+    return this.httpClient.get<Exemplares[]>(
+      `${this.url}/${idLivro}/exemplares`
+    );
   }
 }

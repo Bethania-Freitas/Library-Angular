@@ -13,10 +13,11 @@ import { Exemplares } from '../models/exemplares.model';
 })
 export class ExemplarComponent {
   title = 'Exemplares';
-  tituloLivro!: string;
+  // tituloLivro!: string;
 
   exemplares$ = new Observable<Exemplares[]>();
 
+  id = '';
   quantidade = '';
 
   constructor(
@@ -24,11 +25,11 @@ export class ExemplarComponent {
     private exemplarService: ExemplarService,
     private router: Router
   ) {
-    this.tituloLivro = this.dataService.getInformacao();
-    this.obterQuantidadeCadastrada();
+    // this.tituloLivro = this.dataService.getInformacao();
+    // this.obterQuantidadeCadastrada();
   }
 
   obterQuantidadeCadastrada() {
-    this.exemplares$ = this.exemplarService.obterQuantidade();
+    this.exemplares$ = this.exemplarService.obterQuantidade(this.id);
   }
 }

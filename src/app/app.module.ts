@@ -12,9 +12,10 @@ import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { ReservaComponent } from './reserva/reserva.component';
 import { ExemplarComponent } from './exemplar/exemplar.component';
+import { LivrosComponent } from './livros/livros.component';
 
 @NgModule({
-  declarations: [AppComponent, ReservaComponent, ExemplarComponent],
+  declarations: [AppComponent, ReservaComponent, ExemplarComponent, LivrosComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

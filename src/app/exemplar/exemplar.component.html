@@ -5,13 +5,19 @@
       <tr>
         <th>Livro</th>
         <th>Quantidade</th>
+        <th>Editar</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let exemplar of exemplares$ | async">
-        <td>Titulo dolivro</td>
+        <td>{{ id }}</td>
         <td>{{ exemplar.quantidade }}</td>
+        <th>
+          <!-- <button type="button" (click)="adicionar(exemplar)">Editar</button>
+          <button type="button" (click)="remover(exemplar)">Editar</button> -->
+        </th>
       </tr>
     </tbody>
   </table>
+  <button type="button" [routerLink]="['/']">Voltar para Livros</button>
 </div>
