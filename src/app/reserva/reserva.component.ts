@@ -36,5 +36,14 @@ export class ReservaComponent implements OnInit {
     this.reservas$ = this.reservaService.obterReservas(this.id);
   }
 
-  NovaReserva() {}
+  NovaReserva() {
+    if (!this.usuario || !this.data_inicio) return;
+    this.reservaService
+      .gerarReserva({
+        usuario: this.usuario,
+        data_inicio: this.data_inicio,
+        data_fim: this.data_fim,
+      })
+      .subscribe((_) => this.obterReservasCadastradas());
+  }
 }
