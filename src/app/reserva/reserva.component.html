@@ -1,1 +1,49 @@
-<p>reserva works!</p>
+<div class="container">
+  <h2>Histórico de Reservas</h2>
+  <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Usuário</th>
+        <th>Data Retirada</th>
+        <th>Data Devolução</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reserva of reservas$ | async">
+        <td>{{ reserva.id }}</td>
+        <td>{{ reserva.usuario }}</td>
+        <td>{{ reserva.data_inicio }}</td>
+        <td>{{ reserva.data_fim }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form>
+    <div>
+      <label for="id">Id</label>
+      <input type="text" disabled [ngModel]="id" name="id" id="id" />
+    </div>
+
+    <div>
+      <label for="usuario">Email Usuário</label>
+      <input type="text" [(ngModel)]="usuario" name="usuario" id="usuario" />
+    </div>
+    <div>
+      <label for="data_inicio">Data Retirada:</label>
+      <input
+        type="text"
+        [(ngModel)]="data_inicio"
+        name="data_inicio"
+        id="data_inicio"
+      />
+    </div>
+    <div>
+      <label for="data_fim">Data Devolução:</label>
+      <input type="text" [(ngModel)]="data_fim" name="data_fim" id="data_fim" />
+    </div>
+    <div>
+      <button type="button" (click)="NovaReserva()">Nova Reserva</button>
+    </div>
+  </form>
+</div>

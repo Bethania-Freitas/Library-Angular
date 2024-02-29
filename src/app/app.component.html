@@ -2,13 +2,7 @@
   <form>
     <div>
       <label for="id">Id</label>
-      <input
-        type="text"
-        [attr.disabled]="true"
-        [(ngModel)]="id"
-        name="id"
-        id="id"
-      />
+      <input type="text" disabled [ngModel]="id" name="id" id="id" />
     </div>
 
     <div>
@@ -57,7 +51,7 @@
           <button type="button" (click)="Inativar(livro.id!, livro)">
             {{ livro.ativo ? "Inativar" : "Ativar" }}
           </button>
-          <a [routerLink]="[livro.id, 'reservas']">Reservar</a>
+          <a [routerLink]="[livro.id, 'reservas']">Reservas</a>
 
           <!-- <button type="button" (click)="Copias(livro.id!)">Copias</button> -->
         </td>
