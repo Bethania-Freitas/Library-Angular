@@ -1,1 +1,17 @@
-<p>exemplar works!</p>
+<div class="container">
+  <h2>Controle de Exemplares</h2>
+  <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th>Livro</th>
+        <th>Quantidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exemplar of exemplares$ | async">
+        <td>Titulo dolivro</td>
+        <td>{{ exemplar.quantidade }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -5,6 +5,7 @@ import { Livros } from './models/livros.model';
 import { Reservas } from './models/reservas.model';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Library-Angular';
+  tituloLivro!: string;
 
   livros$ = new Observable<Livros[]>();
 
@@ -21,8 +23,13 @@ export class AppComponent {
   autor = '';
   ano_publicacao = '';
 
-  constructor(private livroService: LivroService, private router: Router) {
+  constructor(
+    private livroService: LivroService,
+    private router: Router,
+    private dataService: DataService
+  ) {
     this.obterLivrosCadastrados();
+    this.tituloLivro = this.titulo;
   }
 
   obterLivrosCadastrados() {

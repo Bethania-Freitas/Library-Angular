@@ -37,6 +37,7 @@
         <th>Autor</th>
         <th>Ano Publicação</th>
         <th>Disponibilidade</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -53,10 +54,9 @@
           </button>
           <a [routerLink]="[livro.id, 'reservas']">Reservas</a>
           <a [routerLink]="[livro.id, 'Exemplares']">Exemplares</a>
-
-          <!-- <button type="button" (click)="Copias(livro.id!)">Copias</button> -->
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+<router-outlet></router-outlet>
