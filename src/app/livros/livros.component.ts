@@ -1,3 +1,4 @@
+import { Exemplares } from './../models/exemplares.model';
 import { ActivatedRoute } from '@angular/router';
 import { LivroService } from './../services/livro.services';
 import { Component, OnInit } from '@angular/core';

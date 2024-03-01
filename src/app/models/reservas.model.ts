@@ -1,3 +1,5 @@
+import { Livros } from './livros.model';
+
 export interface Reservas {
   id?: number;
   usuario: string;

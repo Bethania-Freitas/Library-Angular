@@ -18,7 +18,7 @@ export class ExemplarComponent {
   exemplares$ = new Observable<Exemplares[]>();
 
   id = '';
-  quantidade = '';
+  quantidade: number = 0;
 
   constructor(
     private dataService: DataService,
@@ -32,4 +32,8 @@ export class ExemplarComponent {
   obterQuantidadeCadastrada() {
     this.exemplares$ = this.exemplarService.obterQuantidade(this.id);
   }
+
+  adicionar(quantidade: number) {}
+
+  remover(quantidade: number) {}
 }

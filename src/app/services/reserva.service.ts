@@ -16,10 +16,10 @@ export class ReservaService {
     return this.httpClient.get<Reservas[]>(`${this.url}/${idLivro}/reservas`);
   }
 
-  gerarReserva(reser: Reservas) {
+  gerarReserva(idLivro: string, reser: Reservas) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpClient
-      .post<Reservas>(this.url, reser, { headers })
+      .post<Reservas>(`${this.url}/${idLivro}/reservas`, reser, { headers })
       .pipe(first());
   }
 }

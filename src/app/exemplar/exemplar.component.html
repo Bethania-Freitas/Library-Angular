@@ -1,23 +1,22 @@
 <div class="container">
-  <h2>Controle de Exemplares</h2>
-  <table class="mat-elevation-z8">
-    <thead>
-      <tr>
-        <th>Livro</th>
-        <th>Quantidade</th>
-        <th>Editar</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let exemplar of exemplares$ | async">
-        <td>{{ id }}</td>
-        <td>{{ exemplar.quantidade }}</td>
-        <th>
-          <!-- <button type="button" (click)="adicionar(exemplar)">Editar</button>
-          <button type="button" (click)="remover(exemplar)">Editar</button> -->
-        </th>
-      </tr>
-    </tbody>
-  </table>
-  <button type="button" [routerLink]="['/']">Voltar para Livros</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controle de Exemplares - Livro</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Controle de Exemplares - Livro</h2>
+      <label for="ano_publicacao">Quantos exemplares deseja adicionar:</label>
+      <input
+        type="number"
+        [(ngModel)]="quantidade"
+        name="quantidade"
+        id="quantidade"
+      />
+      <button type="button" (click)="adicionar(quantidade)">Adicionar</button>
+      <button type="button" (click)="remover(quantidade)">Remover</button>
+      <button type="button" [routerLink]="['/']">Voltar para Livros</button>
+    </div>
+  </body>
 </div>
