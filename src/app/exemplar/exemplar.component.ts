@@ -1,9 +1,7 @@
 import { ExemplarService } from './../services/exemplar.service';
 import { Observable } from 'rxjs';
-import { DataService } from './../services/data.service';
 import { Component } from '@angular/core';
-import { Reservas } from '../models/reservas.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Exemplares } from '../models/exemplares.model';
 
 @Component({
@@ -13,27 +11,29 @@ import { Exemplares } from '../models/exemplares.model';
 })
 export class ExemplarComponent {
   title = 'Exemplares';
-  // tituloLivro!: string;
 
   exemplares$ = new Observable<Exemplares[]>();
 
-  id = '';
+  exemplarId: number = 0;
   quantidade: number = 0;
 
   constructor(
-    private dataService: DataService,
     private exemplarService: ExemplarService,
-    private router: Router
-  ) {
-    // this.tituloLivro = this.dataService.getInformacao();
-    // this.obterQuantidadeCadastrada();
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.exemplarId = +params['id'];
+      // this.obterQuantidadeCadastrada();
+    });
   }
 
-  obterQuantidadeCadastrada() {
-    this.exemplares$ = this.exemplarService.obterQuantidade(this.id);
+  adicionar(quantidade: number) {
+    this.exemplarService.somar(this.exemplarId, quantidade);
   }
 
-  adicionar(quantidade: number) {}
-
-  remover(quantidade: number) {}
+  // remover(quantidade: number) {
+  //   this.exemplarService.diminuir(this.exemplarId, quantidade);
+  // }
 }

@@ -33,16 +33,17 @@ export class LivrosComponent implements OnInit {
 
   cadastrarNovoLivro() {
     if (!this.titulo || !this.autor) return;
-    if (this.id !== null && this.id !== undefined) return;
+
     if (this.id) {
       this.atualizar();
+    } else {
+      this.LivroService.cadastrarLivro({
+        titulo: this.titulo,
+        autor: this.autor,
+        ano_publicacao: this.ano_publicacao,
+        ativo: true,
+      }).subscribe((_) => this.obterLivrosCadastrados());
     }
-    this.LivroService.cadastrarLivro({
-      titulo: this.titulo,
-      autor: this.autor,
-      ano_publicacao: this.ano_publicacao,
-      ativo: true,
-    }).subscribe((_) => this.obterLivrosCadastrados());
   }
 
   preencherCampos(book: Livros) {
@@ -67,10 +68,5 @@ export class LivrosComponent implements OnInit {
         this.obterLivrosCadastrados()
       );
     }
-    this.LivroService.ativarLivro(id);
-  }
-
-  Reservar(id: number): void {
-    // this.router.navigate([`${id}/reservas`]);
   }
 }

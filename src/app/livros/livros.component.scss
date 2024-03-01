@@ -38,11 +38,31 @@ input {
 
 button {
   padding: 10px;
-  background-color: #4caf50;
-  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+button[disabled] {
+  background-color: gray;
+}
+
+button[disabled]:hover {
+  background-color: gray;
+}
+
+button.active {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+button.active:hover {
+  background-color: #45a049;
 }
 
 table {

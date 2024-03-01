@@ -2,7 +2,7 @@ import { Livros } from './../models/livros.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { first } from 'rxjs';
+import { Observable, first } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +16,9 @@ export class LivroService {
     return this.httpClient.get<Livros[]>(this.url);
   }
 
-  cadastrarLivro(book: Livros) {
+  cadastrarLivro(book: Livros): Observable<Livros> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.httpClient
-      .post<Livros>(this.url, book, { headers })
-      .pipe(first());
+    return this.httpClient.post<Livros>(this.url, book, { headers });
   }
 
   editarLivro(book: Livros) {
@@ -29,9 +27,5 @@ export class LivroService {
 
   inativarLivro(id: number) {
     return this.httpClient.delete<void>(`${this.url}/${id}`);
-  }
-
-  ativarLivro(id: number) {
-    //todo - acho que falta isso no
   }
 }

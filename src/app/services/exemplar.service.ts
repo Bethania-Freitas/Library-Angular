@@ -17,4 +17,16 @@ export class ExemplarService {
       `${this.url}/${idLivro}/exemplares`
     );
   }
+
+  somar(id: number, quantidade: number) {
+    console.log(`Chamando somar com id: ${id} e quantidade: ${quantidade}`);
+    const url = `${this.url}/${id}/exemplares`;
+    return this.httpClient.post<Exemplares>(url, { quantidade });
+  }
+
+  // diminuir(id: number, quantidade: number) {
+  //   console.log(`Chamando somar com id: ${id} e quantidade: ${quantidade}`);
+  //   const url = `${this.url}/${id}/exemplares`;
+  //   return this.httpClient.delete<Exemplares>(url, { quantidade });
+  // }
 }
