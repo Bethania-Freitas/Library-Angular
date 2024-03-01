@@ -25,7 +25,7 @@ export class ExemplarService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpClient.request<Exemplares>(
       'delete',
-      `${this.url}/${id}/reservas`,
+      `${this.url}/${id}/exemplares`,
       { body: exemplar, headers }
     );
   }
