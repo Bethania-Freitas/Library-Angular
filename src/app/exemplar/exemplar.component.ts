@@ -14,8 +14,8 @@ export class ExemplarComponent {
 
   exemplares$ = new Observable<Exemplares[]>();
 
-  exemplarId: number = 0;
-  quantidade: number = 0;
+  id: string = '';
+  quantidade: string = '';
 
   constructor(
     private exemplarService: ExemplarService,
@@ -23,17 +23,40 @@ export class ExemplarComponent {
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.exemplarId = +params['id'];
-      // this.obterQuantidadeCadastrada();
+    this.id = this.route.snapshot.paramMap.get('id') || '';
+  }
+
+  adicionar() {
+    const quantidadeComoNumero = +this.quantidade;
+
+    if (isNaN(quantidadeComoNumero) || quantidadeComoNumero <= 0) {
+      console.error('Quantidade inválida');
+      return;
+    }
+
+    const exemplar: Exemplares = {
+      quantidade: quantidadeComoNumero,
+    };
+
+    this.exemplarService.somar(this.id, exemplar).subscribe((_) => {
+      this.quantidade = '';
     });
   }
 
-  adicionar(quantidade: number) {
-    this.exemplarService.somar(this.exemplarId, quantidade);
-  }
+  remover() {
+    const quantidadeComoNumero = +this.quantidade;
 
-  // remover(quantidade: number) {
-  //   this.exemplarService.diminuir(this.exemplarId, quantidade);
-  // }
+    if (isNaN(quantidadeComoNumero) || quantidadeComoNumero <= 0) {
+      console.error('Quantidade inválida');
+      return;
+    }
+
+    const exemplar: Exemplares = {
+      quantidade: quantidadeComoNumero,
+    };
+
+    this.exemplarService.diminuir(this.id, exemplar).subscribe((_) => {
+      this.quantidade = '';
+    });
+  }
 }

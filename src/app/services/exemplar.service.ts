@@ -12,21 +12,21 @@ export class ExemplarService {
 
   constructor(private httpClient: HttpClient) {}
 
-  obterQuantidade(idLivro: string): Observable<Exemplares[]> {
-    return this.httpClient.get<Exemplares[]>(
-      `${this.url}/${idLivro}/exemplares`
+  somar(id: string, exemplar: Exemplares) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.httpClient.post<Exemplares>(
+      `${this.url}/${id}/exemplares`,
+      exemplar,
+      { headers }
     );
   }
 
-  somar(id: number, quantidade: number) {
-    console.log(`Chamando somar com id: ${id} e quantidade: ${quantidade}`);
-    const url = `${this.url}/${id}/exemplares`;
-    return this.httpClient.post<Exemplares>(url, { quantidade });
+  diminuir(id: string, exemplar: Exemplares) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.httpClient.request<Exemplares>(
+      'delete',
+      `${this.url}/${id}/reservas`,
+      { body: exemplar, headers }
+    );
   }
-
-  // diminuir(id: number, quantidade: number) {
-  //   console.log(`Chamando somar com id: ${id} e quantidade: ${quantidade}`);
-  //   const url = `${this.url}/${id}/exemplares`;
-  //   return this.httpClient.delete<Exemplares>(url, { quantidade });
-  // }
 }

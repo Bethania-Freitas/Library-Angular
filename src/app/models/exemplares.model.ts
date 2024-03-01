@@ -1,7 +1,4 @@
-import { Livros } from './livros.model';
-
 export interface Exemplares {
-  id: number;
+  id?: number;
   quantidade: number;
-  livro: Livros;
 }

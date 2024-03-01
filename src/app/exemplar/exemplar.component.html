@@ -1,23 +1,15 @@
 <div class="container">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Controle de Exemplares - Livro</title>
-  </head>
-  <body>
-    <div class="container">
-      <h2>Controle de Exemplares - Livro</h2>
-      <label for="ano_publicacao">Quantos exemplares deseja adicionar:</label>
-      <input
-        type="number"
-        [(ngModel)]="quantidade"
-        name="quantidade"
-        id="quantidade"
-      />
-      <button type="button" (click)="adicionar(quantidade)">Adicionar</button>
-      <!-- <button type="button" (click)="remover(quantidade)">Adicionar</button> -->
+  <h3>ID do Livro: {{ id }}</h3>
+  <h2>Controle de Exemplares - Livro</h2>
+  <label for="quantidade">Quantos exemplares deseja adicionar:</label>
+  <input
+    type="number"
+    [(ngModel)]="quantidade"
+    name="quantidade"
+    id="quantidade"
+  />
+  <button type="button" (click)="adicionar()">Adicionar</button>
+  <button type="button" (click)="remover()">Remover</button>
 
-      <button type="button" [routerLink]="['/']">Voltar para Livros</button>
-    </div>
-  </body>
+  <button type="button" [routerLink]="['/']">Voltar para Livros</button>
 </div>
